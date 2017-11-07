@@ -1,0 +1,49 @@
+div {
+  display: inline-block;
+}
+
+li {
+  display: inline-block;
+  margin: 0;
+  max-width: 40px;
+  max-height: 250px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.blackKey {
+  background-color: rgba(5, 5, 5, 1);
+  border-style: outset;
+  border-width: 5px;
+  border-top-color:  rgba(255, 255, 255, 0);
+  border-right-color: rgba(255, 255, 255, 0.15);
+  border-left-color: rgba(255, 255, 255, 0.15);
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+  border-bottom-width: 10px;
+  height: 175px;
+  width: 25px;
+  margin: 0;
+  position: relative;
+  bottom: 18.25em;
+  left: 2em;
+  z-index: 2;
+  display: inline-block;
+}
+.single {
+  position: relative;
+  bottom: 6.43em;
+  display: inline-block;
+}
+.whiteKey {
+  background-color: rgba(220, 220, 220, 0.05);
+  height: 250px;
+  width: 40px;
+  border: solid 1px black;
+  border-radius: 5px;
+  display: inline-block;
+  z-index: 1;
+  margin: 0px;
+  position: relative;
+}
