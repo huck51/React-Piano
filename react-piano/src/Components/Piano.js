@@ -12,10 +12,47 @@ class Piano extends Component {
       charr: Data.charr,
       soundPath: Data.soundPath,
       ebony: Data.ebony,
-      board: Data.board
+      board: Data.board,
+      keyboard: Data.keyboard,
+    }
+    this.change.bind(this);
+    this.playnChange.bind(this);
+  }
+  componentDidMount() {
+    console.log('Shamalamadingdong');
+    window.addEventListener('onKeyDown', this.playnChange, false);
+    window.addEventListener('onKeyUp', this.change, false);
+  }
+  change(event) {
+    let kc = event.keyCode;
+    // let bcolor = document.getElementById(kc).style;
+    let bcolor = {
+      backgroundColor: 'rgba(10, 10, 10, 0)'
+    };
+    if (this.state.data.Data.ivory.includes(kc)) {
+      if (!bcolor.backgroundColor || bcolor.backgroundColor === 'rgba(10, 10, 10, 0)') {
+        bcolor.backgroundColor = 'rgba(150, 25, 65, .5)';
+      } else {
+        bcolor.backgroundColor = 'rgba(10, 10, 10, 0)';
+      }
+    }
+    if (this.state.data.Data.ebony.includes(kc)) {
+      if (!bcolor.backgroundColor || bcolor.backgroundColor === 'black') {
+        bcolor.backgroundColor = 'rgba(150, 25, 65, .5)';
+      } else {
+        bcolor.backgroundColor = 'black';
+      }
     }
   }
+  playnChange(event) {
+    let keyStr = event.key.toString();
+    console.log(keyStr);
+    let key = this.state.data.Data.keyboard[keyStr];
+    console.log(key);
+    this.change(event);
+    key.play();
 
+  }
   render() {
     return (
       <Grid>
@@ -23,9 +60,9 @@ class Piano extends Component {
       <Row>
         <ul>
           <li>
-            <div className="whiteKey" id="49">
+            <div className="whiteKey" id="49" onKeyPress={this.playnChange}>
             </div>
-            <div className="blackKey" id="50">
+            <div className="blackKey" id="50" onKeyDown={this.change}>
             </div>
           </li>
           <li>

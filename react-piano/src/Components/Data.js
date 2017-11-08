@@ -2,6 +2,12 @@
 *
 *******************************************************************/
 
+import ReactHowler from 'react-howler';
+import { Howl } from 'howler';
+import sound from './piano/piano-ff-017.wav';
+
+
+
 const charr =[49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 81, 87, 69,
   82, 84, 89, 85, 73, 79, 80, 219, 221, 65, 83, 68, 70, 71, 72, 74, 75, 76,
   186, 222, 13, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191, 16, 32];
@@ -32,6 +38,7 @@ const soundPath = ['./piano/piano-ff-015.wav', './piano/piano-ff-016.wav',
     './piano/piano-ff-061.wav', './piano/piano-ff-062.wav'];
 
 const ebony = [50, 52, 55, 57, 189, 87, 82, 85, 79, 219, 83, 70, 74, 76, 222, 88, 86, 77, 190, 16];
+const ivory = [49, 51, 53, 54, 56, 48, 187, 81, 69, 84, 89, 73, 80, 221, 65, 68, 71, 72, 75, 186, 13, 90, 67, 66, 78, 188, 191, 32];
 
 const board = [true, false, true, false, true, true, false, true, false, true, false,
   true, true, false, true, false, true, true, false, true, false, true, false, true,
@@ -41,12 +48,24 @@ const board = [true, false, true, false, true, true, false, true, false, true, f
 const board = [true, true, false, true, true, true, false, true, true, false, true,
   true, true, false, true, true, false, true, true, true, false, true, true, false,
   true, true, true, false];
-  */
+*/
+
+const keyboard = {};
+for(let i = 0; i < charr.length; i++) {
+  keyboard[charr[i]] = new Howl({
+    src: soundPath[i]
+  })
+  keyboard[charr[i]].play();
+}
+
   const Data = {
     charr: charr,
     soundPath: soundPath,
     ebony: ebony,
-    board: board
+    board: board,
+    keyboard: keyboard,
+    ivory: ivory,
+    test: test
   };
 
-  module.exports = Data;
+  export default Data;
